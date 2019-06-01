@@ -1,0 +1,65 @@
+/* NOTE: remember that css variables are stored in your browser's history memory;
+   it is very easy to update your css variables in your css or html files, and then
+   wonder why you don't see the changes when you access them with your browser
+   without clearing your history file.
+*/
+
+
+/* css variables for controlling some of the attributes of nodes and links.
+
+   Prefixes:
+   --r = node radius, --nfc = node font color, --nfs = node font size, 
+   --nfh = starting height of node text, an adjustment, --nfw = node text box width,
+   --m = adjustment factor for arrow loction, --la = adjustment factor for link text,
+   --lfc = link text font color, --lfs - link text font size  
+
+  NOTE: the following adjustment factors are guesswork. 
+        Increasing --nfh will increase the starting level of the container box
+           so the node text may start higher in the node,
+        increasing --nfw will increase the width of the text container box so more text
+           may be placed on a line,
+        increasing --m will move the arrowhead marker away from the target node
+           and toward the starting node. Remember that the link line is drawn from 
+           the middle of one node to the center of the other node; changes such 
+           as increasing a radius may hide the narker inside the node,
+        increasing --la will move the starting point of the link text toward the 
+           target node and away from the start node.
+
+  Inheritance provides a base set of node and link variables, and placing overriding css
+  in the html reduces the amount of tailoring for particular queries.
+
+*/
+
+:root 
+{
+   --my-background:#E0E0E0;
+
+   --rMovie:65;     --nfcMovie:#000000;   --nfsMovie:18;  --nfhMovie:5;     --nfwMovie:100;
+   --rPerson:50;    --nfcPerson:#FFFFFF;  --nfsPerson:18; --nfhPerson:-22;  --nfwPerson:30;
+
+   --mACTED_IN:35;  --laACTED_IN:65;      --lfcACTED_IN:#000000;  --lfsACTED_IN:14;
+   --mDIRECTED:35;  --laDIRECTED:65;      --lfcDIRECTED:#000000;  --lfsDIRECTED:14;
+   --mPRODUCED:35;  --laPRODUCED:65;      --lfcPRODUCED:#000000;  --lfsPRODUCED:14;
+   --mREVIEWED:35;  --laREVIEWED:65;      --lfcREVIEWED:#FFFF00;  --lfsREVIEWED:14;
+   --mWROTE:35;     --laWROTE:65;         --lfcWROTE:#000000;     --lfsWROTE:14; 
+}
+
+.node.Movie  { fill:#80FF80;  stroke:#000000; stroke-width:2.0px;}
+.node.Person { fill:#C29BF8;  stroke:#000000; stroke-width:2.0px;}
+
+.link.ACTED_IN    { stroke:#FFA500; stroke-opacity:1.0; stroke-width:5px; }
+.marker.ACTED_IN  { fill:#FFA500;   fill-opacity:1.0 }
+.link.DIRECTED    { stroke:#00FFFF; stroke-opacity:1.0; stroke-width:5px; }
+.marker.DIRECTED  { fill:#00FFFF;   fill-opacity:1.0 }
+.link.PRODUCED    { stroke:#FF00FF; stroke-opacity:1.0; stroke-width:5px; }
+.marker.PRODUCED  { fill:#FF00FF;   fill-opacity:1.0 }
+.link.REVIEWED    { stroke:#800080; stroke-opacity:1.0; stroke-width:5px; }
+.marker.REVIEWED  { fill:#800080;   fill-opacity:1.0 }
+.link.WROTE       { stroke:#FF0000; stroke-opacity:1.0; stroke-width:5px; }
+.marker.WROTE     { fill:#FF0000;   fill-opacity:1.0 }
+
+body
+{
+  background-color: var(--my-background);
+  font-family:"times new roman";
+}
